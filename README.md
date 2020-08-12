@@ -10,7 +10,7 @@ O app está sendo feito em [React Native](https://reactnative.dev/docs/getting-s
 
 * Baixe o projeto na sua máquina
 	```
-		git@github.com:NEVI0/Video-Uploader-App.git
+	git clone git@github.com:NEVI0/Video-Uploader-App.git
 	```
 
 
