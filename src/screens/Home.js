@@ -1,55 +1,59 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
 
-import { Feather } from '@expo/vector-icons';
-import { Foundation } from '@expo/vector-icons';
+import { Feather, Foundation } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Home({ navigation }) {
 	return (
 		<ScrollView showsVerticalScrollIndicator={ false }>
-
 			<View style={ styles.container }>
 
 				<TouchableOpacity style={ styles.menuBtn } onPress={ () => navigation.openDrawer() }>
-					<Foundation name="align-left" size={ 24 } color="#635BDF" />
+					<Foundation name="align-left" size={ 24 } color="#B209D0" />
 				</TouchableOpacity>
-			
+
 				<View style={ styles.userInfo }>
-					<Text style={ styles.userName }>Olá Hanks</Text>
+					<Text style={ styles.userName }>Olá Anna</Text>
 					<Text style={ styles.title }>Dashboard</Text>
 				</View>
 
 				<Image style={ styles.mainImage } source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQQ7CoqlHVkGqkv8cjCtNYY9pI99vjRVpugZg&usqp=CAU" }} />
 
 				<View style={ styles.searchBox }>
-					<TextInput placeholder="Procure por vídeos..." style={ styles.input } />
+					<TextInput placeholder="Procure por videos..." style={ styles.input } />
 					<Feather name="search" size={ 24 } color="#000" />
 				</View>
 
 				<Text style={ styles.cardTitle }>Ultimos Videos</Text>
-				<View style={ styles.lastVideos }>
 
+				<View style={ styles.card }>
 					<View style={ styles.item }>
 						<Image style={ styles.thumbnail } source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQzr0R9ziCVWDGq7tD8jO-FhKrY_KxfqpxW1g&usqp=CAU" }} />
 						<Text style={ styles.videoDescription }>Descrição do video...</Text>
 					</View>
+					
 					<View style={ styles.item }>
 						<Image style={ styles.thumbnail } source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQzr0R9ziCVWDGq7tD8jO-FhKrY_KxfqpxW1g&usqp=CAU" }} />
 						<Text style={ styles.videoDescription }>Descrição do video...</Text>
 					</View>
+					
 					<View style={ styles.item }>
 						<Image style={ styles.thumbnail } source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQzr0R9ziCVWDGq7tD8jO-FhKrY_KxfqpxW1g&usqp=CAU" }} />
 						<Text style={ styles.videoDescription }>Descrição do video...</Text>
 					</View>
-
 				</View>
 
-				<TouchableOpacity style={ styles.seeLastVideosBtn }>
-					<Text style={ styles.seeLastVideosBtnText }>Ver mais</Text>
+				<TouchableOpacity onPress={ () => navigation.navigate("AllVideos") }>
+					<LinearGradient
+          				colors={["#B209D0", "#9313ad", "#6d0584"]}
+          				style={ styles.btn }
+          			>
+			          	<Text style={ styles.textBtn }>Ver Mais</Text>
+			        </LinearGradient>
 				</TouchableOpacity>
 
 			</View>
-
 		</ScrollView>
 	);
 }
@@ -59,18 +63,21 @@ const styles = StyleSheet.create({
 		padding: 20
 	},
 	menuBtn: {
-		marginVertical: 25
+		marginVertical: 25,
+		width: 25
 	},
 	userInfo: {
 		alignItems: "flex-start",
 	},
 	userName: {
 		color: "gray",
-		fontSize: 16
+		fontSize: 16,
+		fontFamily: "sriracha"
 	},
 	title: {
 		fontSize: 24,
-		fontWeight: "bold",
+		fontFamily: "sriracha",
+		marginTop: -10
 	},
 	mainImage: {
 		width: "100%",
@@ -96,7 +103,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		fontWeight: "bold",
  	},
-	lastVideos: {
+	card: {
 		paddingHorizontal: 15,
 		paddingVertical: 10,
 		borderRadius: 10,
@@ -119,13 +126,12 @@ const styles = StyleSheet.create({
 	videoDescription: {
 		color: "gray"
 	},
-	seeLastVideosBtn: {
-		padding: 15,
-		alignItems: "center",
-		backgroundColor: "#635BDF",
+	btn: {
+		padding: 15, 
+		alignItems: 'center', 
 		borderRadius: 10
 	},
-	seeLastVideosBtnText: {
+	textBtn: {
 		color: "#fff",
 		fontWeight: "bold"
 	}
