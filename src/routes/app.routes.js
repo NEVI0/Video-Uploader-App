@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HomeRoutes from './home.routes';
-import Profile from '../screens/Profile';
+import ProfileRoutes from './profile.routes';
 import DrawerContent from '../components/DrawerContent';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -13,8 +13,8 @@ export default function AppRoutes() {
 		<AppDrawer.Navigator
 			drawerContent={ ({ navigation }) => <DrawerContent navigation={ navigation } /> }
 		>
-			<AppDrawer.Screen name="HomeRoutes" component={ HomeRoutes } options={{ title: "Dashboard" }} />
-            <AppDrawer.Screen name="Profile" component={ Profile } options={{ title: "Perfil" }} />
+			<AppDrawer.Screen name="HomeRoutes" component={ HomeRoutes } />
+            <AppDrawer.Screen name="ProfileRoutes" component={ ProfileRoutes } />
 		</AppDrawer.Navigator>
 	);
 }
